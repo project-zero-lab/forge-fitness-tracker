@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101510">
+<title>Forge — Fitness Tracker</title>
+<style>
+:root{--bg:#0c110e;--panel:#151d18;--panel2:#1b261f;--line:#29362d;--text:#f2f7f2;--muted:#9aab9e;--green:#b7f36b;--green2:#8bd53c;--orange:#ffbd69;--red:#ff827c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% -10%,#233525 0,transparent 35%),var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1100px;margin:auto;padding:20px 18px 92px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:6px 0 24px}.brand{display:flex;align-items:center;gap:10px}.logo{width:40px;height:40px;border-radius:13px;background:var(--green);color:#14200d;display:grid;place-items:center;font-size:22px;font-weight:900}.brand h1{font-size:19px;letter-spacing:1.5px;margin:0}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:2px}.date{color:var(--muted);font-size:12px;text-align:right}.welcome{margin-bottom:20px}.eyebrow{color:var(--green);font-size:11px;letter-spacing:2px;font-weight:800;text-transform:uppercase}.welcome h2{font-size:clamp(25px,5vw,38px);line-height:1.1;margin:7px 0}.welcome p{color:var(--muted);margin:8px 0 0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.stat,.card{background:linear-gradient(145deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:18px;padding:16px}.stat .label{font-size:12px;color:var(--muted)}.stat strong{display:block;font-size:25px;margin:5px 0}.stat small{color:var(--green);font-size:11px}.layout{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.card{margin-bottom:14px}.card-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.card h3{margin:0;font-size:16px}.sub{font-size:12px;color:var(--muted)}.btn{border:0;border-radius:12px;padding:10px 14px;background:var(--green);color:#14200d;font-weight:800}.btn:hover{background:#c9ff8b}.btn.secondary{background:#26352a;color:var(--text);border:1px solid #3a4b3d}.btn.small{padding:7px 10px;font-size:12px}.btn.danger{background:#472725;color:#ffd4d1}.workout-item,.log-item,.exercise-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-top:1px solid var(--line)}.workout-item:first-of-type,.log-item:first-of-type{border-top:0}.workout-item strong,.log-item strong{display:block}.workout-item small,.log-item small{color:var(--muted)}.tag{font-size:10px;color:var(--green);background:#2b3d27;padding:5px 8px;border-radius:20px;white-space:nowrap}.progress{height:8px;background:#2b382f;border-radius:20px;overflow:hidden;margin:10px 0}.progress span{display:block;height:100%;background:var(--green);border-radius:20px;width:0;transition:width .2s}.water-controls{display:flex;align-items:center;gap:8px}.water-count{font-size:25px;font-weight:800}.water-glasses{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.glass{width:21px;height:28px;border:1px solid #526453;border-radius:5px 5px 8px 8px;position:relative;overflow:hidden}.glass.full{background:var(--green);border-color:var(--green)}.tabs{display:flex;gap:8px;overflow:auto;margin:18px 0}.tab{border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:9px 14px;border-radius:30px;white-space:nowrap}.tab.active{background:var(--green);color:#14200d;border-color:var(--green);font-weight:800}.view{display:none}.view.active{display:block}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.field{display:flex;flex-direction:column;gap:6px}.field label{font-size:12px;color:var(--muted)}.field input,.field select{width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);background:#0e1510;color:var(--text);outline:none}.field input:focus,.field select:focus{border-color:var(--green)}.form-actions{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}.empty{padding:22px 8px;text-align:center;color:var(--muted);font-size:13px}.exercise-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.exercise-card{background:#101812;border:1px solid var(--line);border-radius:13px;padding:13px}.exercise-card strong{display:block}.exercise-card small{color:var(--muted)}.filter{max-width:220px}.chart{height:170px;display:flex;align-items:end;gap:8px;padding:12px 4px 0;border-bottom:1px solid var(--line)}.bar-wrap{flex:1;height:100%;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:7px;min-width:0}.bar{width:min(34px,70%);background:linear-gradient(var(--green),#527e36);border-radius:7px 7px 2px 2px;min-height:3px}.bar-wrap small{font-size:10px;color:var(--muted)}.notice{font-size:12px;color:var(--muted);background:#111a13;padding:12px;border-radius:12px;margin-top:12px}.toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%);background:var(--green);color:#13200d;padding:10px 16px;border-radius:30px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s;z-index:10}.toast.show{opacity:1}.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#101711ee;backdrop-filter:blur(12px);border-top:1px solid var(--line);display:flex;justify-content:center;gap:4px;padding:9px 8px max(9px,env(safe-area-inset-bottom));z-index:5}.nav-btn{border:0;background:transparent;color:var(--muted);padding:7px 13px;border-radius:12px;font-size:11px;min-width:65px}.nav-btn span{display:block;font-size:19px;margin-bottom:2px}.nav-btn.active{color:var(--green);background:#263426}.section-title{margin:20px 0 10px}.section-title h3{margin:0}.muted{color:var(--muted)}.right{text-align:right}
+@media(max-width:720px){.app{padding:15px 13px 95px}.layout{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:21px}.stat .label{font-size:10px}.top{margin-bottom:20px}.exercise-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:390px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.stat strong{font-size:19px}.nav-btn{padding:7px 9px;min-width:57px}.form-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="brand"><div class="logo">F</div><div><h1>FORGE</h1><small>FITNESS TRACKER</small></div></div><div class="date" id="today"></div></header>
+<section class="welcome"><div class="eyebrow">YOUR TRAINING SPACE</div><h2>Build consistency.<br><span style="color:var(--green)">One session at a time.</span></h2><p>Track your workouts, celebrate progress and make recovery part of the plan.</p></section>
+<div class="stats">
+ <div class="stat"><div class="label">WORKOUTS THIS WEEK</div><strong id="weekCount">0</strong><small>Keep showing up</small></div>
+ <div class="stat"><div class="label">TOTAL SESSIONS</div><strong id="totalCount">0</strong><small>Every session counts</small></div>
+ <div class="stat"><div class="label">EXERCISES LOGGED</div><strong id="exerciseCount">0</strong><small>Across all sessions</small></div>
+</div>
+<div class="tabs" role="tablist">
+ <button class="tab active" data-view="home">Overview</button><button class="tab" data-view="log">Log workout</button><button class="tab" data-view="history">History</button><button class="tab" data-view="library">Exercises</button><button class="tab" data-view="progress">Progress</button>
+</div>
+<section class="view active" id="home">
+ <div class="layout">
+  <div>
+   <div class="card"><div class="card-head"><h3>Quick start</h3><span class="tag">LET'S GO</span></div><p class="sub">Record a session when you're done training.</p><button class="btn" onclick="showView('log')">＋ Log a workout</button></div>
+   <div class="card"><div class="card-head"><h3>Recent activity</h3><button class="btn secondary small" onclick="showView('history')">View all</button></div><div id="recentList" class="empty">No workouts yet. Your first session starts here.</div></div>
+  </div>
+  <div>
+   <div class="card"><div class="card-head"><h3>Daily hydration</h3><span class="tag">OPTIONAL</span></div><div class="water-count"><span id="waterCount">0</span> <span class="sub">glasses logged</span></div><div class="water-glasses" id="waterGlasses"></div><div class="water-controls"><button class="btn small" onclick="changeWater(1)">＋ Add glass</button><button class="btn secondary small" onclick="changeWater(-1)">− Undo</button></div><p class="sub">Use this as a simple reminder; drink according to thirst, activity and your needs.</p></div>
+   <div class="card"><div class="card-head"><h3>This week's rhythm</h3><span class="sub" id="weekLabel"></span></div><div class="chart" id="weekChart"></div><p class="sub">A rest day is productive too. Recovery helps you train well.</p></div>
+  </div>
+ </div>
+</section>
+<section class="view" id="log">
+ <div class="card"><div class="card-head"><h3>Log a workout</h3><span class="tag">NEW SESSION</span></div>
+ <form id="workoutForm">
+  <div class="form-grid">
+   <div class="field"><label for="workDate">Date</label><input id="workDate" type="date" required></div>
+   <div class="field"><label for="workType">Workout focus</label><select id="workType"><option>Full body</option><option>Upper body</option><option>Lower body</option><option>Push</option><option>Pull</option><option>Legs</option><option>Cardio</option><option>Mobility</option><option>Other</option></select></div>
+   <div class="field"><label for="exercise">Exercise</label><input id="exercise" placeholder="e.g. Squats" required></div>
+   <div class="field"><label for="sets">Sets</label><input id="sets" type="number" min="1" max="30" value="3" required></div>
+   <div class="field"><label for="reps">Reps (per set)</label><input id="reps" type="number" min="1" max="100" value="10" required></div>
+   <div class="field"><label for="weight">Weight (kg, optional)</label><input id="weight" type="number" min="0" max="1000" step="0.5" placeholder="Bodyweight / leave blank"></div>
+  </div>
+  <div class="field" style="margin-top:10px"><label for="notes">Notes (optional)</label><input id="notes" maxlength="160" placeholder="How did the session feel?"></div>
+  <div class="form-actions"><button class="btn" type="submit">Save workout</button><button class="btn secondary" type="reset">Clear form</button></div>
+ </form>
+ <div class="notice">Train with good technique, use manageable loads and allow time for rest. Stop if you feel pain or unwell, and ask a qualified coach for help with form.</div>
+ </div>
+ <div class="card"><div class="card-head"><h3>Today's entries</h3></div><div id="todayEntries" class="empty">No entries logged for today.</div></div>
+</section>
+<section class="view" id="history">
+ <div class="card"><div class="card-head"><h3>Workout history</h3><span class="sub" id="historyTotal">0 entries</span></div><div id="historyList" class="empty">Your saved workouts will appear here.</div></div>
+</section>
+<section class="view" id="library">
+ <div class="card"><div class="card-head"><h3>Exercise library</h3><input class="field filter" id="exerciseSearch" placeholder="Search exercises..." aria-label="Search exercises"></div><div class="exercise-grid" id="exerciseGrid"></div></div>
+</section>
+<section class="view" id="progress">
+ <div class="card"><div class="card-head"><h3>Weekly consistency</h3><span class="tag">LAST 7 DAYS</span></div><div class="chart" id="progressChart"></div><p class="sub">Number of sessions logged each day.</p></div>
+ <div class="card"><div class="card-head"><h3>Your milestones</h3></div><div class="workout-item"><div><strong>First session</strong><small>Log your first workout</small></div><span id="milestone1" class="tag">LOCKED</span></div><div class="workout-item"><div><strong>5 sessions</strong><small>Build a steady habit</small></div><span id="milestone5" class="tag">LOCKED</span></div><div class="workout-item"><div><strong>10 sessions</strong><small>Celebrate consistency</small></div><span id="milestone10" class="tag">LOCKED</span></div></div>
+ <div class="notice">Progress isn't only numbers. Good technique, energy, confidence, sleep and recovery matter too.</div>
+</section>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<nav class="bottom-nav" aria-label="Main navigation">
+ <button class="nav-btn active" data-view="home"><span>⌂</span>Home</button><button class="nav-btn" data-view="log"><span>＋</span>Log</button><button class="nav-btn" data-view="history"><span>▤</span>History</button><button class="nav-btn" data-view="library"><span>✦</span>Exercises</button><button class="nav-btn" data-view="progress"><span>↗</span>Progress</button>
+</nav>
+<script>
+const KEY='forgeFitnessWorkouts_v1', WATER='forgeFitnessWater_v1';
+const $=id=>document.getElementById(id);
+let workouts=load(KEY,[]), water=load(WATER,{});
+function load(k,f){try{return JSON.parse(localStorage.getItem(k))??f}catch(e){return f}}
+function save(){localStorage.setItem(KEY,JSON.stringify(workouts));localStorage.setItem(WATER,JSON.stringify(water))}
+function dateKey(d=new Date()){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function pretty(s){return new Date(s+'T12:00:00').toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'})}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1800)}
+function showView(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===v));document.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view===v));window.scrollTo({top:0,behavior:'smooth'});render()}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+$('today').textContent=new Date().toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short'});
+$('workDate').value=dateKey();
+$('weekLabel').textContent=new Date().toLocaleDateString(undefined,{month:'short',day:'numeric'});
+function weekDays(){let a=[];for(let i=6;i>=0;i--){let d=new Date();d.setDate(d.getDate()-i);a.push(dateKey(d))}return a}
+function dailyCounts(){let counts={};workouts.forEach(w=>counts[w.date]=(counts[w.date]||0)+1);return counts}
+function chart(el){let days=weekDays(),counts=dailyCounts(),max=Math.max(1,...days.map(d=>counts[d]||0));$(el).innerHTML=days.map(d=>{let n=counts[d]||0;let label=new Date(d+'T12:00:00').toLocaleDateString(undefined,{weekday:'short'});return `<div class="bar-wrap" title="${n} session(s)"><small>${n||''}</small><div class="bar" style="height:${Math.max(3,n/max*105)}px"></div><small>${label}</small></div>`}).join('')}
+function entryHTML(w,withDelete=true){return `<div class="log-item"><div><strong>${escapeHTML(w.exercise)} <span class="tag">${escapeHTML(w.type)}</span></strong><small>${pretty(w.date)} · ${w.sets} sets × ${w.reps} reps${w.weight!==''&&w.weight!=null?' · '+w.weight+' kg':''}${w.notes?' · '+escapeHTML(w.notes):''}</small></div>${withDelete?`<button class="btn danger small" onclick="deleteWorkout('${w.id}')">Delete</button>`:''}</div>`}
+function render(){
+ let counts=dailyCounts(),days=weekDays(),week=days.reduce((n,d)=>n+(counts[d]||0),0);
+ $('weekCount').textContent=week;$('totalCount').textContent=workouts.length;$('exerciseCount').textContent=workouts.length;
+ let recent=[...workouts].sort((a,b)=>(b.date+b.id).localeCompare(a.date+a.id)).slice(0,4);
+ $('recentList').innerHTML=recent.length?recent.map(w=>entryHTML(w,false)).join(''):'<div class="empty">No workouts yet. Your first session starts here.</div>';
+ let today=workouts.filter(w=>w.date===dateKey()).sort((a,b)=>b.id.localeCompare(a.id));
+ $('todayEntries').innerHTML=today.length?today.map(w=>entryHTML(w)).join(''):'<div class="empty">No entries logged for today.</div>';
+ let sorted=[...workouts].sort((a,b)=>(b.date+b.id).localeCompare(a.date+a.id));
+ $('historyTotal').textContent=workouts.length+' entries';
+ $('historyList').innerHTML=sorted.length?sorted.map(w=>entryHTML(w)).join(''):'<div class="empty">Your saved workouts will appear here.</div>';
+ chart('weekChart');chart('progressChart');
+ $('waterCount').textContent=water[dateKey()]||0;
+ $('waterGlasses').innerHTML=Array.from({length:8},(_,i)=>`<div class="glass ${(water[dateKey()]||0)>i?'full':''}"></div>`).join('');
+ $('milestone1').textContent=workouts.length>=1?'UNLOCKED':'LOCKED';$('milestone5').textContent=workouts.length>=5?'UNLOCKED':'LOCKED';$('milestone10').textContent=workouts.length>=10?'UNLOCKED':'LOCKED';
+}
+$('workoutForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const w={id:String(Date.now()),date:$('workDate').value,type:$('workType').value,exercise:$('exercise').value.trim(),sets:Number($('sets').value),reps:Number($('reps').value),weight:$('weight').value,notes:$('notes').value.trim()};
+ if(!w.exercise||!w.date||w.sets<1||w.reps<1){toast('Please check the workout details');return}
+ workouts.push(w);save();$('workoutForm').reset();$('workDate').value=dateKey();$('sets').value=3;$('reps').value=10;render();toast('Workout saved! Nice work.');showView('log');
+});
+function deleteWorkout(id){if(!confirm('Delete this workout entry?'))return;workouts=workouts.filter(w=>w.id!==id);save();render();toast('Entry deleted')}
+function changeWater(n){let d=dateKey();water[d]=Math.max(0,Math.min(20,(water[d]||0)+n));save();render()}
+const exercises=[
+['Push-ups','Chest · shoulders · triceps','Bodyweight'],['Bench press','Chest · triceps','Push'],['Overhead press','Shoulders · triceps','Push'],['Lateral raises','Shoulders','Accessory'],['Squats','Quads · glutes','Legs'],['Lunges','Quads · glutes','Legs'],['Romanian deadlift','Hamstrings · glutes','Legs'],['Lat pulldown','Back · biceps','Pull'],['Seated row','Back · biceps','Pull'],['Dumbbell curl','Biceps','Accessory'],['Plank','Core','Core'],['Walking','Cardio · general fitness','Cardio'],['Cycling','Cardio · legs','Cardio'],['Hip mobility','Mobility','Recovery']
+];
+function renderLibrary(q=''){let items=exercises.filter(x=>x.join(' ').toLowerCase().includes(q.toLowerCase()));$('exerciseGrid').innerHTML=items.map(x=>`<div class="exercise-card"><strong>${x[0]}</strong><small>${x[1]}</small><div style="margin-top:9px"><button class="btn secondary small" onclick="quickAdd('${x[0]}')">＋ Add to log</button></div></div>`).join('')||'<div class="empty">No exercises found.</div>'}
+function quickAdd(name){$('exercise').value=name;showView('log');$('exercise').focus()}
+$('exerciseSearch').addEventListener('input',e=>renderLibrary(e.target.value));
+renderLibrary();render();
+</script>
+</body>
+</html>
